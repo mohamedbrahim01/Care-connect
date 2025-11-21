@@ -3,7 +3,7 @@
  * Elements: "Care Connect" logo, notification bell icon, user profile avatar. The avatar could be a dropdown menu for "Profile" and "Logout".
  */
 
-import { Bell, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -28,15 +28,7 @@ const Header = () => {
 
         {/* Icons and User Avatar on the right */}
         <div className="flex items-center gap-5">
-          <button className="text-slate-500 hover:text-slate-700 relative">
-            <Bell size={22} />
-            {/* Notification dot */}
-            <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white" />
-          </button>
 
-          <button className="text-slate-500 hover:text-slate-700 relative">
-            <Bell size={22} />
-          </button>
 
           <div className="flex items-center space-x-3">
             <button
