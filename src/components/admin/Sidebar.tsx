@@ -9,9 +9,10 @@ import { NavLink } from "react-router-dom";
 import {
   LayoutDashboard,
   Users,
-  ClipboardList,
+  Stethoscope,
+
   BadgeCheck,
-  Activity,
+
   Settings,
   CircleUserRound,
 } from "lucide-react";
@@ -20,9 +21,10 @@ import {
 const navLinks = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/admin/dashboard" },
   { icon: Users, label: "Patients", href: "/admin/patients" },
-  { icon: ClipboardList, label: "Requests", href: "/admin/requests" },
+  { icon: Stethoscope, label: "Doctors", href: "/admin/doctors" },
+
   { icon: BadgeCheck, label: "Verification", href: "/admin/verify-doctors" },
-  { icon: Activity, label: "Activity", href: "/admin/activity" },
+
   { icon: Settings, label: "Settings", href: "/admin/settings" },
 ];
 

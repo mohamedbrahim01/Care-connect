@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Shield, Eye, EyeOff } from "lucide-react";
+import { useAuth } from "../../context/AuthContext";
+import { authService } from "../../services/authService";
+
 
 const AdminLogin = () => {
   const [formData, setFormData] = useState({
@@ -9,18 +12,23 @@ const AdminLogin = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
 
-    // Simple authentication check (in real app, this would be API call)
-    if (formData.username === "admin" && formData.password === "admin123") {
-      // Store auth state (in real app, use proper auth context/token)
-      localStorage.setItem("adminAuth", "true");
-      navigate("/admin/dashboard");
-    } else {
-      setError("Invalid username or password");
+    try {
+      const user = await authService.login(formData.username, formData.password);
+      if (user && user.role === 'admin') {
+        login(user);
+        navigate("/admin/dashboard");
+      } else {
+        setError("Invalid username or password");
+      }
+    } catch (err) {
+      setError("An error occurred. Please try again.");
     }
   };
 
